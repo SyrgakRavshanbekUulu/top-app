@@ -1,6 +1,9 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['courses-top.ru']
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
