@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
-import { Button, HTag, P, Rating, Tag } from '../components';
+import { Button, HTag, Input, P, Rating, Tag, Textarea } from '../components';
 import { WithLayout } from '../layout/Layout';
 import axios from 'axios'
 import { MenuItem } from '../interfaces/menu.interface';
@@ -23,6 +23,8 @@ function Home({menu, firstCategory}: HomeProps) {
       <ul>
         {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
       </ul>
+      <Input placeholder='test2'/>
+      <Textarea placeholder="textarea placeholder"/>
     </>
   )
 }
