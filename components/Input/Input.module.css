@@ -9,6 +9,7 @@
   font-size: 16px;
   line-height: 22px;
   font-family: var(--font-family);
+  min-width: 230px;
 }
 
 .input::placeholder {
