@@ -130,15 +130,12 @@
   margin-bottom: 5px;
 }
 
-.closed {
-  overflow: hidden;
-  max-height: 0;
-  padding: 0;
+.opened {
+  padding: 30px;
 }
 
-.opened {
-  max-height: auto;
-  padding: 30px;
+.reviews {
+  overflow: hidden;
 }
 
 .ratingTitle a {
@@ -260,6 +257,9 @@
     "hr2"
     "actions"
     ;
+  }
+  .reviewButton {
+    margin-left: 0;
   }
 
 }
