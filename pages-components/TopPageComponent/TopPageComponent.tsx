@@ -19,7 +19,7 @@ export const TopPageComponent = ({ firstCategory, products, page }: TopPageCompo
     <div className={styles.wrapper}>
       <div className={styles.title}>
         <HTag tag='h1'>{page.title}</HTag>
-        {products && <Tag color='grey' size='m'>{products.length}</Tag>}
+        {products && <Tag color='grey' size='m' aria-label={products.length + 'элементов'}>{products.length}</Tag>}
         <Sort sort={sort} setSort={setSort}/>
       </div>
       <div>
