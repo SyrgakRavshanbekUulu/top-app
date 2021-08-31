@@ -9,8 +9,13 @@ import { firstLevelMenu } from '../../helpers/helpers';
 import { TopPageComponent } from '../../pages-components';
 import { Api } from '../../helpers/api';
 import Head from 'next/head';
+import React from 'react';
+import {Error404} from '../404'
 
-function TopPage({firstCategory, page, products}: TopPageProps) {
+function TopPage({ firstCategory, page, products }: TopPageProps) {
+  if (!page || !products) {
+    return <Error404 />
+  }
   return (
     <>
       <Head>
@@ -31,7 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = []
 
   for (const m of firstLevelMenu) {
-    const {data: menu} = await axios.post<MenuItem[]>(Api.topPage.find, {
+    const { data: menu } = await axios.post<MenuItem[]>(Api.topPage.find, {
       firstCategory: m.id
     })
     paths = paths.concat(menu.flatMap(s => s.pages.map(p => `/${m.route}/${p.alias}`)))
@@ -43,20 +48,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<TopPageProps> = async ({params}: GetStaticPropsContext<ParsedUrlQuery>) => {
-  if (!params){
+export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
+  if (!params) {
     return {
       notFound: true
     }
   }
   const firstCategoryItem = firstLevelMenu.find(m => m.route == params.type)
-  if (!firstCategoryItem){
+  if (!firstCategoryItem) {
     return {
       notFound: true
     }
   }
   try {
-    const {data: menu} = await axios.post<MenuItem[]>(Api.topPage.find, {
+    const { data: menu } = await axios.post<MenuItem[]>(Api.topPage.find, {
       firstCategory: firstCategoryItem.id
     })
     if (menu.length == 0) {
@@ -64,8 +69,8 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({params}: Get
         notFound: true
       }
     }
-    const {data: page} = await axios.get<TopPageModel>(Api.topPage.byAllias + params.alias)
-    const {data: products} = await axios.post<ProductModel[]>(Api.product.find, {
+    const { data: page } = await axios.get<TopPageModel>(Api.topPage.byAllias + params.alias)
+    const { data: products } = await axios.post<ProductModel[]>(Api.product.find, {
       category: page.category,
       limit: 10
     })
@@ -82,7 +87,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({params}: Get
       notFound: true
     }
   }
-  
+
 }
 
 interface TopPageProps extends Record<string, unknown> {
