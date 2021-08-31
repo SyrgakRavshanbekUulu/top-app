@@ -8,10 +8,18 @@ import { ProductModel } from '../../interfaces/product.interface';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { TopPageComponent } from '../../pages-components';
 import { Api } from '../../helpers/api';
+import Head from 'next/head';
 
 function TopPage({firstCategory, page, products}: TopPageProps) {
   return (
     <>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name='description' content={page.metaDescription} />
+        <meta property='og:title' content={page.metaTitle} />
+        <meta property='og:description' content={page.metaDescription} />
+        <meta property='ot:type' content='article' />
+      </Head>
       <TopPageComponent products={products} page={page} firstCategory={firstCategory} />
     </>
   )
