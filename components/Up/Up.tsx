@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { useScroll } from '../../hooks/useScroll'
 import { IconButton } from '../IconButton/IconButton'
 import styles from './Up.module.css'
-import UpIcon from './up.svg'
 
 export const Up = (): JSX.Element => {
   const y = useScroll()
@@ -24,7 +23,7 @@ export const Up = (): JSX.Element => {
       animate={controls}
       initial={{opacity: 0}}
     >
-      <IconButton icon='up' appearance='primary' onClick={scrollToTop}/>
+      <IconButton icon='up' appearance='primary' onClick={scrollToTop} aria-label='на верх'/>
     </motion.div>
   )
 }
