@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.reviewForm input {
+  width: 230px;
+}
+
 .description, .submit {
   grid-column: start / end;
 }
@@ -49,7 +53,8 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  cursor: pointer; 
+  border: none;
+  background: none;
 }
 
 
@@ -74,5 +79,8 @@
 @media screen and (max-width: 640px) {
   .reviewForm {
     grid-template-columns: [start] 1fr [end];
+  }
+  .reviewForm input {
+    width: 100%;
   }
 }
