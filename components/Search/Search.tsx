@@ -4,7 +4,7 @@ import styles from './Search.module.css'
 import SearchIcon from './search.svg'
 import { Input } from '../Input/Input'
 import { Button } from '../Button/Button'
-import { useState } from 'react'
+import { useState, KeyboardEvent } from 'react'
 import { useRouter } from 'next/router'
 
 export const Search = ({className, ...props}: SearchProps): JSX.Element => {
@@ -25,9 +25,10 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
     }
   }
   return (
-    <div
+    <form
       className={cn(className, styles.search)}
       {...props}
+      role='search'
     >
       <Input 
         placeholder='Поиск...'
@@ -39,10 +40,11 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
       <Button 
         appearance='primary'
         className={styles.button}
-        onClick={goToSearch}  
+        onClick={goToSearch}
+        aria-label='Искать по сайту'
       >
         <SearchIcon />
       </Button>
-    </div>
+    </form>
   )
 }
