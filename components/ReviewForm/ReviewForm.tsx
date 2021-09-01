@@ -26,8 +26,8 @@ export const ReviewForm = ({ className, productId, isOpened, ...props }: ReviewF
       } else {
         setIsError('something wrong')
       }
-    } catch (e) {
-      setIsError(e.message)
+    } catch (error: any) {
+      setIsError(error.message)
     }
   }
   return (
